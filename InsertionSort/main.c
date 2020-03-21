@@ -7,6 +7,7 @@ int PrintArray(int* array, int array_length){
         printf("%d ", array[i]);
     }
     printf("\n");
+    return 0;
 }
 
 // 插入排序，结果按升序排列
