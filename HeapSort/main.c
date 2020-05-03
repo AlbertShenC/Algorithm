@@ -15,9 +15,18 @@ int PrintArray(int *array, int array_length){
     return 0;
 }
 
+// 交换数组 下标i 和 下标j 对应的值
+int swap(int *array, int i, int j){
+    int temp;
+    temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+    return 0;
+}
+
 // 递归维护最大堆
 int MaintainMaxHeap(int *heap, int i){
-    int largest, temp;
+    int largest;
     int left = LEFT(i);
     int right = RIGHT(i);
     if(left <= heap[0] && heap[left] > heap[i]){
@@ -29,9 +38,7 @@ int MaintainMaxHeap(int *heap, int i){
         largest = right;
     }
     if(largest != i){
-        temp = heap[largest];
-        heap[largest] = heap[i];
-        heap[i] = temp;
+        swap(heap, largest, i);
         MaintainMaxHeap(heap, largest);
     }
     return 0;
@@ -48,12 +55,10 @@ int BuildHeap(int *heap){
 
 // 堆排序
 int HeapSort(int *heap){
-    int i, temp;
+    int i;
     BuildHeap(heap);
     for(i = heap[0]; i >= 1; i--){
-        temp = heap[1];
-        heap[1] = heap[heap[0]];
-        heap[heap[0]] = temp;
+        swap(heap, 1, heap[0]);
         heap[0] -= 1;
         MaintainMaxHeap(heap, 1);
     }
