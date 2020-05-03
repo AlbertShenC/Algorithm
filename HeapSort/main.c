@@ -6,7 +6,7 @@
 #define HEAP_LENGTH 20
 
 // 输出数组结果
-int PrintArray(int* array, int array_length){
+int PrintArray(int *array, int array_length){
     int i;
     for(i = 0; i < array_length; i++){
         printf("%d ", array[i]);
